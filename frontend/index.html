@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SentinelScan — Web Security Dashboard</title><link rel="stylesheet" href="/style.css"></head>
+<body><div class="shell"><aside class="sidebar">
+<div class="brand"><span class="brandmark">S</span><div><b>SentinelScan</b><small>WEB SECURITY</small></div></div>
+<nav>
+<a href="#overview" class="nav-link active" data-section="overview">Overview</a>
+<a href="#scans" class="nav-link" data-section="scans">Scans</a>
+<a href="#findings-section" class="nav-link" data-section="findings-section">Findings</a>
+<a href="#reports" class="nav-link" data-section="reports">Reports</a>
+</nav>
+<div class="side-note"><b>Authorized targets only</b><p>Use localhost or an intentionally vulnerable lab such as OWASP Juice Shop.</p></div>
+</aside><main class="main"><header class="top"><div><p class="eyebrow">SECURITY OPERATIONS</p><h1>Vulnerability Dashboard</h1></div><div class="status-dot"><i></i> Scanner ready</div></header>
+<section class="hero"><div><p class="eyebrow">NEW SCAN</p><h2>Scan a web application</h2><p class="muted">Crawl the target and check common OWASP-aligned security weaknesses.</p></div>
+<form id="scanForm"><div class="url-row"><input id="target" value="http://localhost:3000" required><button>Start scan →</button></div>
+<label class="permission"><input id="permission" type="checkbox" required> I have permission to scan this target and will use this tool only for authorized testing.</label>
+<div class="options"><label>Delay <input id="delay" type="number" step=".05" min="0" value=".25"></label><label>Pages <input id="pages" type="number" min="1" max="200" value="30"></label><label>Timeout <input id="timeout" type="number" min="1" max="30" value="8"></label></div></form></section>
+<section id="progressCard" class="card progress-card hidden"><div class="progress-head"><b id="stage">Starting…</b><span id="pct">0%</span></div><div class="bar"><div id="bar"></div></div></section>
+<section id="summary" class="hidden" data-section="findings-section"><div class="section-head"><div><p class="eyebrow">SCAN RESULT</p><h2 id="resultTarget">Target</h2></div><button id="download" class="ghost">Download JSON</button></div>
+<div class="cards"><div class="metric"><span>Total findings</span><strong id="total">0</strong></div><div class="metric high"><span>High</span><strong id="high">0</strong></div><div class="metric medium"><span>Medium</span><strong id="medium">0</strong></div><div class="metric low"><span>Low</span><strong id="low">0</strong></div></div>
+<div class="card findings-card"><div class="section-head compact"><div><h2>Findings</h2><p class="muted">Evidence and remediation for each detected indicator.</p></div></div><div id="findings"></div></div></section>
+<section id="scans" class="card history" data-section="scans"><div class="section-head compact"><div><h2>Recent scans</h2><p class="muted">Local scan history</p></div></div><div id="history"></div></section>
+<section id="reports" class="card reports-panel" data-section="reports">
+<div class="section-head compact"><div><h2>Reports</h2><p class="muted">Download the JSON report for the latest completed scan.</p></div>
+<button id="reportsDownload" class="ghost">Download latest report</button></div>
+<p id="reportHint" class="muted">Run a scan first. Your latest report will appear here.</p>
+</section>
+<footer>SentinelScan · Educational security testing · Non-destructive by design</footer></main></div><script src="/app.js"></script></body></html>

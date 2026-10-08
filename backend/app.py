@@ -79,4 +79,5 @@ def report(sid):
     return send_from_directory(REPORTS,sid+".json",as_attachment=True)
 
 if __name__=="__main__":
-    db().close(); app.run(host="127.0.0.1",port=5000,debug=False)
+    port = int(os.environ.get("PORT", 3000))
+    db().close(); app.run(host="127.0.0.1", port=port, debug=False)
